@@ -39,26 +39,9 @@
         ]);
     };
 
-    home-manager.users.${config.bbommarito.user.username} = lib.mkIf config.bbommarito.graphical.gnome.enable {
-      dconf.settings = {
-        "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-        };
-        "org/gnome/desktop/session" = {
-          idle-delay = "unit32 900";
-        };
-        "org/gnome/desktop/screensaver" = {
-          lock-delay = "uint32 1800";
-          lock-enabled = "true";
-        };
-        "org/gnome/desktop/peripherals/touchpad" = {
-          tap-to-click = "true";
-        };
-        "org/gnome/settings-daemon/plugins/power" = {
-          sleep-inactive-ac-type = "'nothing'";
-        };
+    home-manager.users.${config.bbommarito.user.username} =
+      lib.mkIf config.bbommarito.graphical.gnome.enable {
       };
-    };
 
     services.xserver = {
       enable = true;
