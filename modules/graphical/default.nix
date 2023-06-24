@@ -20,6 +20,10 @@
         user.extraGroups = ["networkmanager"];
       };
 
+      environment.systemPackages = with pkgs; [
+        _1password-gui
+      ];
+
       networking = {
         networkmanager = {
           enable = true;
