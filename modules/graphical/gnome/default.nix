@@ -40,7 +40,11 @@
     };
 
     home-manager.users.${config.bbommarito.user.username} =
-      lib.mkIf config.bbommarito.graphical.gnome.enable {
+      lib.mkIf config.bbommarito.graphical.gnome.enable
+      {
+        imports = [
+          ./dconf.nix
+        ];
       };
 
     services.xserver = {
