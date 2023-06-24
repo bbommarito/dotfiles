@@ -19,6 +19,12 @@
       programs.firefox = {
         enable = true;
         package = config.bbommarito.graphical.firefox.package;
+
+        profiles.default = {
+          extensions = [
+            config.nur.repos.rycee.firefox-addons.onepassword-password-manager
+          ];
+        };
       };
     };
   };
