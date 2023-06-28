@@ -35,14 +35,14 @@
               zlocal =
                 {
                   allowDiscards = true;
-                  device = "/dev/disk/by-uuid/844f1abd-65ae-4b2c-8de9-d3f715428832";
+                  device = "/dev/disk/by-uuid/0 edee4c7-0adc-424b-84bc-64fa19f06bc1";
                   preLVM = true;
                 };
 
               zsafe =
                 {
                   allowDiscards = true;
-                  device = "/dev/disk/by-uuid/a08ec7db-9670-4c70-a0ed-18460dae1b3b";
+                  device = "/dev/disk/by-uuid/ccb960f6-9c7b-4067-81f7-01af16ab07f2";
                   preLVM = true;
                 };
             };
@@ -93,7 +93,7 @@
   };
 
   fileSystems."${config.bbommarito.dataPrefix}/home" = {
-    device = "zsafe/safe/home";
+    device = "zsafe/root/home";
     fsType = "zfs";
     neededForBoot = true;
     options = [ "defaults" "noexec" ];
@@ -101,7 +101,7 @@
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/BA41-9ACC";
+      device = "/dev/disk/by-uuid/051A-4CDC";
       fsType = "vfat";
       options = [ "defaults" "noexec" "noauto" "x-systemd.automount" ];
     };
