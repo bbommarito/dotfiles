@@ -4,7 +4,7 @@
 }: {
   options.bbommarito.base.zfs =
     let
-      option = param: {
+      options = param: {
         directories = lib.mkOption {
           type = lib.types.listOf lib.types.str;
           default = [ ];
