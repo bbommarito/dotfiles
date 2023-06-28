@@ -39,7 +39,7 @@
                   preLVM = true;
                 };
 
-              zhome =
+              zsafe =
                 {
                   allowDiscards = true;
                   device = "/dev/disk/by-uuid/a08ec7db-9670-4c70-a0ed-18460dae1b3b";
@@ -64,19 +64,11 @@
     };
   };
 
-  fileSystems."/" =
-    {
-      device = "zlocal/root/root";
-      fsType = "zfs";
-      neededForBoot = true;
-    };
-
-  fileSystems."/tmp" =
-    {
-      device = "zlocal/root/tmp";
-      fsType = "zfs";
-      neededForBoot = true;
-    };
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "defaults" "size=3G" "mode=755" ];
+  };
 
   fileSystems."/nix" =
     {
@@ -90,19 +82,28 @@
       device = "zlocal/root/var-log";
       fsType = "zfs";
       neededForBoot = true;
+      options = [ "defaults" "noexec" ];
     };
 
-  fileSystems."/home" =
-    {
-      device = "zhome/root/home";
-      fsType = "zfs";
-      neededForBoot = true;
-    };
+  fileSystems.${config.bbommarito.dataPrefix} = {
+    device = "zsafe/root/data";
+    fsType = "zfs";
+    neededForBoot = true;
+    options = [ "defaults" "noexec" ];
+  };
+
+  fileSystems."${config.bbommarito.dataPrefix}/home" = {
+    device = "zsafe/safe/home";
+    fsType = "zfs";
+    neededForBoot = true;
+    options = [ "defaults" "noexec" ];
+  };
 
   fileSystems."/boot" =
     {
       device = "/dev/disk/by-uuid/BA41-9ACC";
       fsType = "vfat";
+      options = [ "defaults" "noexec" "noauto" "x-systemd.automount" ];
     };
 
   networking = {
