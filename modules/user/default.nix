@@ -76,5 +76,9 @@
       ".ssh"
       ".local/share/fonts"
     ];
+
+    bbommarito.base.zfs.user.files = [
+      ".config/monitors.xml"
+    ];
   };
 }

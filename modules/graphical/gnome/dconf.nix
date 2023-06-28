@@ -33,6 +33,8 @@ with lib.hm.gvariant;
     "org/gnome/shell" = {
       enabled-extensions = [ "appindicatorsupport@rgcjonas.gmail.com" ];
     };
-
+    "org/gnome/mutter" = {
+      experimental-features = [ "scale-monitor-framebuffer" ];
+    };
   };
 }
