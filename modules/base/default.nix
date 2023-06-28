@@ -1,12 +1,12 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   imports = [
     ./fish
     ./sshd
+    ./zfs
   ];
 
   options.bbommarito = {
@@ -26,6 +26,7 @@
     bbommarito.base = {
       fish.enable = lib.mkDefault true;
       sshd.enable = lib.mkDefault true;
+      zfs.enable = lib.mkDefault true;
     };
 
     environment.systemPackages = [
@@ -43,9 +44,9 @@
 
     home-manager.users.${config.bbommarito.user.username} =
       lib.mkIf config.bbommarito.user.enable
-      {
-        home.stateVersion = config.bbommarito.stateVersion;
-      };
+        {
+          home.stateVersion = config.bbommarito.stateVersion;
+        };
 
     home-manager.users.root.home.stateVersion = config.bbommarito.stateVersion;
 
@@ -67,7 +68,7 @@
         "nixpkgs=${pkgs.path}"
       ];
 
-      settings.experimental-features = ["nix-command" "flakes"];
+      settings.experimental-features = [ "nix-command" "flakes" ];
     };
 
     nixpkgs.config.allowUnfree = true;

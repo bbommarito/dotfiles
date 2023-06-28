@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   options.bbommarito.graphical.firefox = {
     enable = lib.mkEnableOption "Enable graphical firefox settings";
@@ -27,5 +26,9 @@
         };
       };
     };
+
+    bbommarito.base.zfs.user.directories = [
+      ".mozilla/firefox/default"
+    ];
   };
 }
