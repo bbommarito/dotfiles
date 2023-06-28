@@ -1,8 +1,5 @@
-{ lib, ... }:
-
-with lib.hm.gvariant;
-
-{
+{lib, ...}:
+with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
@@ -31,10 +28,26 @@ with lib.hm.gvariant;
     };
 
     "org/gnome/shell" = {
-      enabled-extensions = [ "appindicatorsupport@rgcjonas.gmail.com" ];
+      enabled-extensions = ["appindicatorsupport@rgcjonas.gmail.com"];
     };
     "org/gnome/mutter" = {
-      experimental-features = [ "scale-monitor-framebuffer" ];
+      experimental-features = ["scale-monitor-framebuffer"];
+    };
+    "org/gnome/terminal/legacy/profiles:/:b7982be9-c1f9-43c9-ae8f-f47558f2c5ca" = {
+      background-color = "#0b0d0f";
+      bold-color = "#ffffff";
+      bold-color-same-as-fg = true;
+      font = "ComicCodeLigatures Nerd Font 16";
+      foreground-color = "#ffffff";
+      palette = ["#414d58" "#ff9580" "#8aff80" "#ffff80" "#9580ff" "#ff80bf" "#80ffea" "#f8f8f2" "#4c5967" "#ffaa99" "#a2ff99" "#ffff99" "#aa99ff" "#ff99cc" "#99ffee" "#ffffff"];
+      use-system-font = false;
+      use-theme-background = false;
+      use-theme-colors = false;
+      visible-name = "General";
+    };
+    "org/gnome/terminal/legacy/profiles:" = {
+      default = "b7982be9-c1f9-43c9-ae8f-f47558f2c5ca";
+      list = ["b7982be9-c1f9-43c9-ae8f-f47558f2c5ca"];
     };
   };
 }

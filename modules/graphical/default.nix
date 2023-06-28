@@ -18,11 +18,18 @@
         graphical.firefox.enable = true;
 
         user.extraGroups = ["networkmanager"];
-      };
 
-      environment.systemPackages = with pkgs; [
-        _1password-gui
-      ];
+        user.extraUserPackages = [
+          pkgs._1password-gui
+        ];
+
+        base.zfs.system.directories = [
+          "/etc/nixos"
+          "/etc/NetworkManager/system-connections"
+          "/var/lib/bluetooth"
+          "/var/lib/iwd"
+        ];
+      };
 
       networking = {
         networkmanager = {
