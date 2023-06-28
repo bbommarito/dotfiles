@@ -8,8 +8,8 @@
     services.openssh.enable = true;
 
     age.identityPaths = [
-      "${config.etu.dataPrefix}/etc/ssh/ssh_host_ed25519_key"
-      "${config.etu.dataPrefix}/etc/ssh/ssh_host_rsa_key"
+      "${config.bbommarito.dataPrefix}/etc/ssh/ssh_host_ed25519_key"
+      "${config.bbommarito.dataPrefix}/etc/ssh/ssh_host_rsa_key"
     ];
 
     # Persistence of ssh key files

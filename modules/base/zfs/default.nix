@@ -8,12 +8,12 @@
         directories = lib.mkOption {
           type = lib.types.listOf lib.types.str;
           default = [ ];
-          description = "Directories to pass to environment.persistence attribute for ${param} under ${config.etu.dataPrefix}";
+          description = "Directories to pass to environment.persistence attribute for ${param} under ${config.bbommarito.dataPrefix}";
         };
         files = lib.mkOption {
           type = lib.types.listOf lib.types.str;
           default = [ ];
-          description = "Files to pass to environment.persistence attribute for ${param} under ${config.etu.dataPrefix}";
+          description = "Files to pass to environment.persistence attribute for ${param} under ${config.bbommarito.dataPrefix}";
         };
       };
     in
@@ -23,7 +23,7 @@
       user = options "user";
       root = options "root";
     };
-  config = lib.mkIf config.etu.base.zfs.enable {
+  config = lib.mkIf config.bbommarito.base.zfs.enable {
     environment.persistence.${config.bbommarito.dataPrefix} = {
       directories = config.bbommarito.base.zfs.system.directories;
       files =
@@ -36,7 +36,7 @@
         directories = config.bbommarito.base.zfs.root.directories;
         files = config.bbommarito.base.zfs.root.files;
       };
-      users.${config.etu.user.username} = lib.mkIf config.bbommarito.user.enable {
+      users.${config.bbommarito.user.username} = lib.mkIf config.bbommarito.user.enable {
         directories = config.bbommarito.base.zfs.user.directories;
         files = config.bbommarito.base.zfs.user.files;
       };
