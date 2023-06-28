@@ -56,7 +56,7 @@
   };
 
   config = {
-    age.secrets.hashed-bbommarito-password = lib.mkIf config.bbommarito.user.enable myData.ageModules.hashed-bbommarito-password;
+    #age.secrets.hashed-bbommarito-password = lib.mkIf config.bbommarito.user.enable myData.ageModules.hashed-bbommarito-password;
     environment.homeBinInPath = config.bbommarito.user.enable;
 
     users.mutableUsers = false;
@@ -67,7 +67,7 @@
           description = "${config.bbommarito.user.realname},,,,";
           extraGroups = [ "wheel" ];
           isNormalUser = true;
-          passwordFile = config.age.secrets.hashed-bbommarito-password.path;
+          #passwordFile = config.age.secrets.hashed-bbommarito-password.path;
           uid = config.bbommarito.user.uid;
         };
 
